@@ -2,18 +2,50 @@ $(function(){
 
     var header = $("#header"),
         introH = $("#intro").innerHeight(),
+
         scrollOffset = 0;
 
     /* Fixed Header */
     $(window).on("scroll load resize", function(){
-        introH = $("#intro").innerHeight(); 
+        introH = $("#intro").innerHeight();
+        
+        AboutOffset = $("#about").offset().top;
+        ServiceOffset = $("#services").offset().top;
+        WorkOffset = $("#works").offset().top;
+        BlogOffset = $("#blog").offset().top;
+        FooterOffset = $("#footer").offset().top;
+
         scrollOffset = $(this).scrollTop();
+
+        blockAboutH = (ServiceOffset);
 
         if(scrollOffset > introH){
             header.addClass("fixed");
         } else {
             header.removeClass("fixed")
         }
+
+        if(scrollOffset >= AboutOffset){
+            $("#nav a").removeClass("active");
+            $('[data-scroll="#about"]').addClass("active"); 
+        } 
+        if(scrollOffset >= ServiceOffset){
+            $("#nav a").removeClass("active");
+            $('[data-scroll="#services"]').addClass("active"); 
+        } 
+        if(scrollOffset >= WorkOffset){
+            $("#nav a").removeClass("active");
+            $('[data-scroll="#works"]').addClass("active"); 
+        } 
+        if(scrollOffset >= BlogOffset){
+            $("#nav a").removeClass("active");
+            $('[data-scroll="#blog"]').addClass("active"); 
+        } 
+        if(scrollOffset >= FooterOffset - 160){
+            $("#nav a").removeClass("active");
+            $('[data-scroll="#footer"]').addClass("active"); 
+        } 
+       
     });
 
     /* Smoth Scroll */
@@ -57,6 +89,5 @@ $(function(){
         slidesToShow: 1,
         slidesToScroll: 1
     });
-
 
 });

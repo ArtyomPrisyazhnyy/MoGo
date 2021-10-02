@@ -28,7 +28,9 @@ $(function(){
         if(scrollOffset >= AboutOffset){
             $("#nav a").removeClass("active");
             $('[data-scroll="#about"]').addClass("active"); 
-        } 
+        } else {
+            $("#nav a").removeClass("active");
+        }
         if(scrollOffset >= ServiceOffset){
             $("#nav a").removeClass("active");
             $('[data-scroll="#services"]').addClass("active"); 
